@@ -26,49 +26,24 @@
     </template>
 
     <script>
-      let dyr = [
-        {
-          navn: "frø",
-          type: "amfibie",
-          billede: "http://mabe-kea.dk/E19/pics/frog.png",
-          levested: "vandhullet",
-        },
-        {
-          navn: "gris",
-          type: "pattedyr",
-          billede: "http://mabe-kea.dk/E19/pics/pig.png",
-          levested: "svinefarme",
-        },
-        {
-          navn: "ræv",
-          type: "pattedyr",
-          billede: "http://mabe-kea.dk/E19/pics/fox.png",
-          levested: "skoven",
-        },
-        {
-          navn: "sild",
-          type: "fisk",
-          billede: "http://mabe-kea.dk/E19/pics/sild.jpg",
-          levested: "havet",
-        },
-
-        {
-          navn: "krokodille",
-          type: "krybdyr",
-          billede: "http://mabe-kea.dk/E19/pics/kroko.jpg",
-          levested: "floden",
-        },
-      ];
-
       document.addEventListener("DOMContentLoaded", start);
+
+      const listevis = document.querySelector("#liste");
+      const dyrTemplate = document.querySelector("template");
 
       function start() {
         console.log("Dom er loaded");
+      }
 
-        console.log(dyr);
+      const fil = "alleDyr.json";
 
-        const listevis = document.querySelector("#liste");
-        const dyrTemplate = document.querySelector("template");
+      async function hentdata(fil) {
+        const resultat = await fetch(fil);
+        const json = await resultat.json();
+        vis(json);
+      }
+
+      function vis(dyr) {
         dyr.forEach((element) => {
           console.log(element);
           let klon = dyrTemplate.cloneNode(true).content;
@@ -82,13 +57,8 @@
             element.levested;
           listevis.appendChild(klon);
         });
-
-        // dyr.forEach(visHvertElement);
-
-        // function visHvertElement(element) {
-        //   console.log(element);
-        // }
       }
+      hentdata(fil);
     </script>
   </body>
 </html>
