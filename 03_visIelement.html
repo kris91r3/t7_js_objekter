@@ -9,22 +9,41 @@
   </head>
   <body>
     <article id="info">
-      <p></p>
+      <h3></h3>
       <img src="" alt="" />
+      <p>Type:</p>
+      <p>Levested :</p>
     </article>
-    <script>
-      let dyr = {
-        navn: "gris",
-        type: "pattedyr",
-        billede: "http://mabe-kea.dk/E19/pics/pig.png",
-        levested: "svinefarme",
-      };
 
-      let dyret = ` dyr:${dyr.navn} type:${dyr.type} levested:${dyr.levested}`;
-      console.log(dyret);
-      const destination = document.querySelector("#info");
-      destination.querySelector("p").textContent = dyret;
-      destination.querySelector("img").src = dyr.billede;
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        console.log("Dom er loaded");
+        let dyr = {
+          navn: "gris",
+          type: "pattedyr",
+          billede: "http://mabe-kea.dk/E19/pics/pig.png",
+          levested: "svinefarme",
+        };
+
+        console.log(dyr);
+
+        console.log(
+          ` navn:${dyr.navn} type:${dyr.type} levested:${dyr.levested}`
+        );
+
+        const navn = `${dyr.navn}`;
+        const destination = document.querySelector("#info");
+        destination.querySelector("h3").textContent = navn;
+        destination.querySelector("img").src = dyr.billede;
+        destination.querySelector("p").textContent =
+          destination.querySelector("p").textContent + "" + dyr.type;
+        destination.querySelector("p:last-child").textContent =
+          destination.querySelector("p:last-child").textContent +
+          "" +
+          dyr.levested;
+      }
     </script>
   </body>
 </html>
