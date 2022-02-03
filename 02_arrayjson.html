@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section></section>
+    <template>
+      <article>
+        <p class="morgemad">Morgenmad</p>
+        <p class="frokost">Frokost</p>
+        <p class="aftensmad">Aftensmad</p>
+        <p>Krydderier:</p>
+        <ul class class="emneliste"></ul>
+      </article>
+    </template>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        console.log("Dom er loaded");
+      }
+
+      function vis(json) {
+        const beholder = document.querySelector("#section");
+        const ulListe = document.querySelector("template");
+
+        json.forEach((element) => {
+          console.log(element);
+          const klon = ulListe.cloneNode(true).content;
+          klon.querySelector(".morgenmad").textContent = element.morgenmad;
+          klon.querySelector("frokost").textContent = element.frokost;
+          klon.querySelector("aftensmad").textContent = element.aftensmad;
+
+          element.emner.forEach((emne) => {
+            klon.querySelector(".emneliste").innerHTML +=
+              "<li>" + emne + "</li>";
+          });
+
+          beholder.appendChild(klon);
+        });
+      }
+    </script>
+  </body>
+</html>

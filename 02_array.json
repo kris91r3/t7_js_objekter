@@ -1,0 +1,21 @@
+[
+  {
+    "morgenmad": "havregryn",
+    "frokost": "rugbrød",
+    "aftensmad": "lasagne",
+    "krydderier": ["salt", "peber"]
+  },
+  {
+    "morgenmad": "yoghurt",
+    "frokost": "sandwich",
+    "aftensmad": "chili con carne",
+    "krydderier": ["Chili", "kanel"]
+  },
+
+  {
+    "morgenmad": "toast",
+    "frokost": "salat",
+    "aftensmad": "kylling",
+    "krydderier": ["paprika", "koriander"]
+  }
+]
