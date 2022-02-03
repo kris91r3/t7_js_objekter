@@ -7,19 +7,13 @@
     <title>Document</title>
   </head>
   <body>
+    <article></article>
     <script>
-      let dyr = {
-        navn: "gris",
-        type: "pattedyr",
-        billede: "http://mabe-kea.dk/E19/pics/pig.png",
-        levested: "svinefarme",
-      };
+      document.addEventListener("DOMcontentLoaded", start);
 
-      //   console.log(dyr);
-
-      console.log(
-        ` navn:${dyr.navn} type:${dyr.type} levested:${dyr.levested}`
-      );
+      function start() {
+        console.log(start);
+      }
     </script>
   </body>
 </html>
