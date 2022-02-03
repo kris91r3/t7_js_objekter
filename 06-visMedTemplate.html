@@ -6,14 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <title>Document</title>
+    <style>
+      #info {
+        border: 2px solid black;
+        padding: 25px;
+        margin: 5px;
+      }
+    </style>
   </head>
   <body>
-    <article id="info">
-      <p></p>
-      <img src="" alt="" />
-    </article>
-
     <section id="liste"></section>
+    <template>
+      <article id="info">
+        <h3></h3>
+        <img src="" alt="" />
+        <p>Type:</p>
+        <p>Levested :</p>
+      </article>
+    </template>
+
     <script>
       let dyr = [
         {
@@ -57,9 +68,19 @@
         console.log(dyr);
 
         const listevis = document.querySelector("#liste");
+        const dyrTemplate = document.querySelector("template");
         dyr.forEach((element) => {
           console.log(element);
-          listevis.innerHTML += `<p>${element.navn}, ${element.type} fra  ${element.levested} </p>`;
+          let klon = dyrTemplate.cloneNode(true).content;
+          klon.querySelector("h3").textContent = element.navn;
+          klon.querySelector("img").src = element.billede;
+          klon.querySelector("p").textContent =
+            klon.querySelector("p").textContent + " " + element.type;
+          klon.querySelector("p:last-child").textContent =
+            klon.querySelector("p:last-child").textContent +
+            " " +
+            element.levested;
+          listevis.appendChild(klon);
         });
 
         // dyr.forEach(visHvertElement);
